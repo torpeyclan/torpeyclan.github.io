@@ -1,0 +1,86 @@
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?" />
+  <meta
+    name="description"
+    content="{% if page.excerpt %}{{
+      page.excerpt | strip_html | strip_newlines | truncate: 160
+    }}{% else %}{{ site.description }}{% endif %}"
+  />
+  <meta name="author" content="David Torpey" />
+  <meta property="og:site_name" content="{{ site.title }}" />
+  {% if page.title %}
+  <title>{{ page.title }} | {{ site.title | escape }}</title>
+  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="{{ page.excerpt | strip_html }}" />
+  {% else %}
+  <title>{{ site.title | escape }}</title>
+  <meta property="og:title" content="{{ site.title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="{{ site.description }}" />
+  {% endif %} {% if page.date %}
+  <meta
+    property="article:published_time"
+    content="{{ page.date | date_to_xmlschema }}"
+  />
+  <meta property="article:author" content="{{ site.url }}/about/" />
+  {% endif %}
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  {% if page.tags %}
+  <meta itemprop="keywords" content="{{ page.tags | join: ',' }}" />
+  {% for tag in page.tags %}
+  <meta property="article:tag" content="{{ tag }}" />
+  {% endfor %} {% endif %} {% if author %}
+  <meta property="article:author" content="{{ author.name }}" />
+
+  {% endif %} {% if page.math != false %} {%
+  include mathjax.html %} {% endif %}
+
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light box-shadow">
+  <div class="container">
+    {% assign default_paths = site.pages | map: "path" %} {% assign page_paths =
+    site.header_pages | default: default_paths %}
+    <a class="navbar-brand" style="color:#2045d7; " href="/">
+      <h3>
+        {{ site.title | escape }}
+      </h3>
+    </a>
+
+    <div class="collapse navbar-collapse">
+      <img src="/logo.svg" height="70px" class="navbar-nav ml-auto" alt="" />
+    </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarsExampleDefault"
+      aria-controls="navbarsExampleDefault"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav ml-auto">
+        {% for path in page_paths %} {% assign my_page = site.pages | where:
+        "path", path | first %} {% if my_page.title %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ my_page.url | relative_url }}">{{
+            my_page.title | escape
+          }}</a>
+        </li>
+        {% endif %} {% endfor %}
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include header.html %}
+  <body>
+    <main role="main">
+      <div style="background-color:#ffffff" class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <a
+              style="color:#000000"
+              class="display-4 font-weight-bold"
+              href="{{ page.url }}"
+            >
+              {{ page.title }}
+            </a>
+            <p class="lead font-weight-bold">
+              <span></span>
+            </p>
+          </div>
+        </div>
+        {{ content }}
+      </div>
+    </main>
+    {% include footer.html %}
+  </body>
+</html>

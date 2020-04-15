@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "Science"
+date:   2020-04-14 21:55:55 +0200
+math: true
+mathjax: true
+tags: [science]
+---
+
+New potential fundamental theory of physics. See article [here](https://www.sciencenews.org/article/stephen-wolfram-hypergraph-project-fundamental-theory-physics).
+
